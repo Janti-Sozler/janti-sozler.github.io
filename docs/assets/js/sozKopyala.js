@@ -1,7 +1,7 @@
 
 
 function copy() {
-    var ipAdress = document.getElementById("soz").textContent;
+    var ipAdress = document.getElementById("soz").textContent + " - https:\/\/jantisozler.org\/";
     copyToClipboard(ipAdress);
     Toast.fire({
         title: 'Janti söz, panoya kopyalandı 👍'
