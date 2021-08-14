@@ -2,10 +2,11 @@ $(document).ready(function(){
     // Sayfa hazır hale geldikten sonra rastgele söz çek
     rastgeleSoz();
 
-    
-});
 
-// Çağırıldığı zaman #soz ID'sine rastgele janti sözü döndürür.
+    $('#logo').on('click',function (){
+        rastgeleSoz();
+    });
+    // Çağırıldığı zaman #soz ID'sine rastgele janti sözü döndürür.
 function rastgeleSoz(){
     Papa.parse("https://raw.githubusercontent.com/Janti-Sozler/janti-sozler.github.io/main/janti-sozler.csv", {
     download:true,
@@ -68,4 +69,6 @@ function playBeep(){
 
 $('#soz').on('click',function (){
     copy();
-})
+});
+    
+});
