@@ -1,8 +1,29 @@
+$(document).ready(function(){
+    // Sayfa hazır hale geldikten sonra rastgele söz çek
+    rastgeleSoz();
 
+
+    $('#logo').on('click',function (){
+        rastgeleSoz();
+    });
+    // Çağırıldığı zaman #soz ID'sine rastgele janti sözü döndürür.
+function rastgeleSoz(){
+    Papa.parse("https://raw.githubusercontent.com/Janti-Sozler/janti-sozler.github.io/main/janti-sozler.csv", {
+    download:true,
+    header:true,
+    complete: function(results) {
+        limit = results.data.length-1;
+        secim = Math.floor(Math.random()*limit)
+        soz = results.data[secim]['Söz'];
+        console.log(results.data[secim]['Söz']);
+        $('#soz').text(soz)
+    }
+});
+}
 
 function copy() {
-    var ipAdress = document.getElementById("soz").textContent + " - https:\/\/jantisozler.org\/";
-    copyToClipboard(ipAdress);
+    var jantiSoz = document.getElementById("soz").textContent + " - https:\/\/jantisozler.org\/";
+    copyToClipboard(jantiSoz);
     Toast.fire({
         title: 'Janti söz, panoya kopyalandı 👍'
     })
@@ -48,4 +69,6 @@ function playBeep(){
 
 $('#soz').on('click',function (){
     copy();
-})
+});
+    
+});
